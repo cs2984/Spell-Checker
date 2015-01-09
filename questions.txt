@@ -1,0 +1,26 @@
+1. According to its man page, what does getrusage do?
+
+Get information about resource utilization. Return infer describing what resources are used
+
+2. How many members are in a variable of type struct rusage?
+
+15
+
+3. Why do you think before and after are passed by reference to calculate, 
+even though their contents aren't changed?
+
+Before and after are passed by reference so that they do not take up more memory in the stack since that contribute to the amount of time it would take for spell checker to run.
+
+4. Explain as precisely as possible, in a paragraph or more, how main goes about 
+reading words from a file. In other words, convince us that you indeed understand 
+how that function's for loop works. 
+
+After checking for the correct number of arguments, the main function loads in the dictionary and calculates the time in order to do that. After loading the dictionary and opening the dictionary file, there is a for loop which checks each character in the file until the it reaches the EOF. Then there is a check to only add characters to the array word if it is alphabetical character or an apostrophes and then the integer index is incremented. It also checks to make sure if the word entered is longer than the Max word length it takes in the rest of the string and then turns the index to 0 in order to count for the next word. The main function is also making sure to ignore words with numbers by using isdigit© and only appending the things that are alphabetical characters. When the index number is not at a reset point then a new word has been found so the word counter is updated and there is a null terminating character added to the word array at the position of index. 
+
+5. Why do you think fgetc is used to read each word's characters one at a time 
+rather than fscanf with a format string like "%s" to read whole words at a time? 
+In other words, what problems might arise by relying 
+on fscanf alone?
+
+fscanf reads in whole words so there is no way to check for apostrophes or numbers within a word. Using fgetc, we have the ability to iterate over all the characters within the word and check for those character problems that would arise. 
+

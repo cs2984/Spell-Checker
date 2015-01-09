@@ -1,0 +1,55 @@
+1. Describe in detail in English the data structure(s) with which you plan to implement
+this spell-checker. Also define the data structure(s) in C (as with struct).
+
+I plan to implement a hash table for the spell checker. The hash table consists of an array of linked lists. Within the spell checker assignment the words in the dictionary are going to be distributed amongst the multiple linked lists in an organized way using a hash function after creating a hash table. The has function will return where a given word is within the array of linked lists. Because a hash table is an array of linked lists, each linked list has nodes which encapsulate the word as well as a pointer to the next node. Within this structure the last node will have a pointer that points to NULL so that we know where the end of the list is.
+
+
+typedef struct hash_node {
+    char *word[MAX_WORD_LEN + 1];
+    struct hash_node *next;
+} hash_node;
+
+typedef struct hash_table {
+    int numwords; 
+    hash_node **nodes;
+} hash_table;
+
+2. Tell us, in pseudocode, step by step, how you intend to implement load.
+
+Open dictionary file. Initialize hash table and make sure there is enough memory available for the hash table. 
+
+Within the hash table i am going to initialize the nodes in the double pointer and make sure there is enough memory. 
+
+Finally initialize the size of the table with a predefined size for the table. 
+
+Set all the pointers to NULL
+
+Pull a full word from the dictionary file
+
+Call the insert function in order to insert words from dictionary into hash table
+
+Close the dictionary
+
+
+3. Tell us, in pseudocode, step by step, how you intend to implement check.
+
+Iterate over each character of a word within index,
+
+Make sure that word is lowercase in order to compare to index
+
+**Perform the hash function on the word in order to create a key for 
+**make the new integer key into a node 
+
+look through the nodes in the hash tabs until we reach NULL
+
+If we reach NULL then word does not exist
+
+Else check to see if its a word and return true if it is and false if is not
+
+4. Tell us, in pseudocode, step by step, how you intend to implement size.
+
+print the numwords component in the hash_table struct
+ 
+Otherwise it will it will return 0
+
+

@@ -1,0 +1,20 @@
+
+I implemented a hash function for this spell checker assignment. 
+/* Structs for Hash Table */
+
+typedef struct hash_node {
+    char  *word;
+    struct hash_node *next;
+} hash_node;
+
+typedef struct hash_table {
+    int numwords; 
+    hash_node **nodes;
+} hash_table;
+
+int hash_func(char* word);
+hash_table* hash_create();
+bool hash_insert(char *word);
+void hash_print();
+
+While the general concepts of how I did things remained very similar to the concepts i wrote in the design txt file, there were specific changes that occurred in the implementation of some of the functions. For instance, the hash function that i ended up using was different then the one i originally thought i would use. After doing research online for different hash functions I found a function used a power of 2^16 which was the most optimal size for the size of the dictionary that is used in this problem set. The hash function also differs from the one demonstrated in class because it does the modding within the function rather than in each particular function in the file. My load function also changed when i received errors because i was reading \r character. Because of this I changed the implementation of load and used fscanf to read in the strings within the dictionary until the end of file. fscanf only read strings up to the /n or /r characters rather then checking each character. 
